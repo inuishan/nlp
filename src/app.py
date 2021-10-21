@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import ner
+import classify
 import json
 
 app = Flask(__name__)
@@ -50,6 +51,12 @@ def hello_world():
     else:
         merged = []
     return json.dumps(merged)
+
+
+@app.route('/classify/')
+def classify():
+    text = request.args.get('text')
+    return classify.classify(text)
 
 @app.route('/yt/')
 def yt():
