@@ -43,7 +43,8 @@ def hello_world():
     tokens = ner.extract_token(text)
     for token in tokens:
         del (token['score'])
-    merged = merge_tokens(tokens, text)
+    if len(tokens) != 0:
+        merged = merge_tokens(tokens, text)
     return json.dumps(merged)
 
 
