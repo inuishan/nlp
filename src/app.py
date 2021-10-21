@@ -58,6 +58,7 @@ def classify():
     text = request.args.get('text')
     return classify.classify(text)
 
+
 @app.route('/yt/')
 def yt():
     video_id = request.args.get('video_id')
