@@ -9,4 +9,9 @@ nlp = pipeline("ner", model=model, tokenizer=tokenizer)
 
 def extract_token(text):
     ner_results = nlp(text)
-    print(text)
+    return ner_results
+
+
+if __name__ == "__main__":
+    while True:
+        extract_token(input())
