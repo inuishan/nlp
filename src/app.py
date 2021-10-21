@@ -5,6 +5,8 @@ import json
 
 app = Flask(__name__)
 
+from youtube_transcript_api import YouTubeTranscriptApi
+
 
 def unify_labels(tokens):
     for token in tokens:
@@ -45,7 +47,25 @@ def hello_world():
         del (token['score'])
     if len(tokens) != 0:
         merged = merge_tokens(tokens, text)
+    else:
+        merged = []
     return json.dumps(merged)
+
+@app.route('/yt/')
+def yt():
+    video_id = request.args.get('video_id')
+
+    # print(transcript)
+    transcript_list, unretrievable_videos = YouTubeTranscriptApi.get_transcripts([video_id], continue_after_error=True)
+
+    srt = transcript_list.get(video_id)
+
+    text_list = []
+    for i in srt:
+        text_list.append(i['text'])
+
+    text = ' '.join(text_list)
+    return text
 
 
 if __name__ == '__main__':
