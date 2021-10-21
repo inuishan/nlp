@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request
-from ner import extract_token
+import ner
 import json
 
 app = Flask(__name__)
@@ -40,7 +40,7 @@ def merge_tokens(tokens, text):
 @app.route('/ner/')
 def hello_world():
     text = request.args.get('text')
-    tokens = extract_token(text)
+    tokens = ner.extract_token(text)
     for token in tokens:
         del (token['score'])
     merged = merge_tokens(tokens, text)
