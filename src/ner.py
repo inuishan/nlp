@@ -13,5 +13,4 @@ def extract_token(text):
 
 
 if __name__ == "__main__":
-    while True:
-        extract_token(input())
+    extract_token(input())

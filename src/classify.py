@@ -16,5 +16,4 @@ def classify(text):
 
 
 if __name__ == "__main__":
-    while True:
-        classify('Man who was armed with a knife at an hospital in Dallas, Texas, has been shot dead by police; no officers injured; special unit investigating the case')
+    classify('Man who was armed with a knife at an hospital in Dallas, Texas, has been shot dead by police; no officers injured; special unit investigating the case')
